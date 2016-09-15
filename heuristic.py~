@@ -1,0 +1,49 @@
+
+import board, player, tile, aistats
+
+
+class Heuristic(object):
+	
+	def __init__(self):
+		self.stats = aistats.AIStats()
+
+	def adjust(self, trayTiles = None, seedRatio = None, playTiles = None):
+		return 0		
+
+'''class tileQuantileHeuristic(Heuristic):
+	
+	def __init__(self, quantile = .5, weight = .5):
+		Heuristic.__init__(self)
+		
+		allLetters = self.stats.letterPlaysInvCDF(None, quantile)
+		
+		self.totalAdjustment = 0
+		self.adjustmentsMade = 0
+		
+		self.letterAdjust = {}
+		for code in range(ord('A'), ord('Z')+1):
+			char = chr(code)
+			self.letterAdjust[char] = (allLetters - self.stats.letterPlaysInvCDF(char, quantile)) * weight
+		char = '_'
+		self.letterAdjust[char] = (allLetters - self.stats.letterPlaysInvCDF(char, quantile)) * weight
+			
+
+class notEndGameHeuristic(Heuristic):
+	
+	def __init__(self, h):
+		Heuristic.__init__(self)
+		self.heuristic = h
+	
+	def adjust(self, trayTiles = None, seedRatio = None, playTiles = None):
+		adjustment = super(notEndGameHeuristic, self).adjust(trayTiles = trayTiles, seedRatio = seedRatio, playTiles = playTiles)
+		if len(trayTiles) == player.Player.TRAY_SIZE:
+			adjustment += self.heuristic.adjust(trayTiles = trayTiles, seedRatio = seedRatio, playTiles = playTiles)
+		return adjustment
+			
+
+class endGameHeuristic(Heuristic):
+
+	def __init__(self, h):
+		Heuristic.__init__(self)
+		self.heuristic = h
+'''
